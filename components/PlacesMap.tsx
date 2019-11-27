@@ -93,7 +93,7 @@ const PlacesMap: NextPage = () => {
   const [center, setCenter] = useState({ lat: 11.0168, lng: 76.9558 });
   const [zoom, setZoom] = useState(11);
 
-  if (process.env.CURRENT_ENVIRONMENT === 'production') {
+  if (process.env.current_environment === 'production') {
     return (
       <Container>
         <WorkInProgress />
@@ -104,7 +104,7 @@ const PlacesMap: NextPage = () => {
       <Container>
         <div style={{ height: '100vh', width: '100%' }}>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
+            bootstrapURLKeys={{ key: `${process.env.google_maps_api_key}` }}
             defaultCenter={center}
             center={center}
             defaultZoom={zoom}
