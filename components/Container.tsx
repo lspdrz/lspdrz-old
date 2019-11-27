@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
 const Container: FunctionComponent = props => {
@@ -12,7 +12,7 @@ const Container: FunctionComponent = props => {
           href="https://fonts.googleapis.com/css?family=Hind&display=swap"
           rel="stylesheet"
         />
-        <link rel="shortcut icon" href="/public/favicon.ico" />
+        <link rel="shortcut icon" href="/static/favicon.ico" />
       </Head>
       <style jsx global>{`
         h1 {

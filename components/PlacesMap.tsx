@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 import React, { useState } from 'react';
 
 import Container from './Container';
+import WorkInProgress from './WorkInProgress';
 
 const mapOptions = {
   styles: [
@@ -92,19 +93,27 @@ const PlacesMap: NextPage = () => {
   const [center, setCenter] = useState({ lat: 11.0168, lng: 76.9558 });
   const [zoom, setZoom] = useState(11);
 
-  return (
-    <Container>
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
-          defaultCenter={center}
-          center={center}
-          defaultZoom={zoom}
-          options={mapOptions}
-        />
-      </div>
-    </Container>
-  );
+  if (process.env.CURRENT_ENVIRONMENT === 'production') {
+    return (
+      <Container>
+        <WorkInProgress />
+      </Container>
+    );
+  } else {
+    return (
+      <Container>
+        <div style={{ height: '100vh', width: '100%' }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
+            defaultCenter={center}
+            center={center}
+            defaultZoom={zoom}
+            options={mapOptions}
+          />
+        </div>
+      </Container>
+    );
+  }
 };
 
 export default PlacesMap;
