@@ -1,12 +1,16 @@
 {
     "env": {
         "GOOGLE_MAPS_API_KEY": "@google-maps-api-key",
-        "CURRENT_ENVIRONMENT": "@current-environment"
+        "CURRENT_ENVIRONMENT": "@current-environment",
+        "CONTENTFUL_SPACE_ID": "@contentful_space_id",
+        "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
     },
     "build": {
         "env": {
             "GOOGLE_MAPS_API_KEY": "@google-maps-api-key",
-            "CURRENT_ENVIRONMENT": "@current-environment"
+            "CURRENT_ENVIRONMENT": "@current-environment",
+            "CONTENTFUL_SPACE_ID": "@contentful_space_id",
+            "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
         }
     }
 }
