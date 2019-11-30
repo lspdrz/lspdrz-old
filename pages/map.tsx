@@ -9,8 +9,8 @@ interface MapProps {
   entries: Array<Location>;
 }
 
-const Map: NextPage<MapProps> = props => {
-  return <PlacesMap />;
+const Map: NextPage<MapProps> = (props: MapProps) => {
+  return <PlacesMap plotPoints={props.entries} />;
 };
 
 Map.getInitialProps = async () => {

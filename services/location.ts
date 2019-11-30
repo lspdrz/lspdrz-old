@@ -51,7 +51,6 @@ export class LocationApi {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   convertLocation = (rawData: any): Location => {
-    console.log(rawData);
     const rawLocation = rawData.fields;
     return {
       id: rawData.sys.id,

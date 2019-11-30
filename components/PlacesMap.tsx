@@ -4,7 +4,9 @@ import { NextPage } from 'next';
 import React, { useState } from 'react';
 
 import Container from './Container';
+import Marker from './Marker';
 import WorkInProgress from './WorkInProgress';
+import { Location } from '../services/location.types';
 
 const mapOptions = {
   styles: [
@@ -89,9 +91,28 @@ const mapOptions = {
   ]
 };
 
-const PlacesMap: NextPage = () => {
-  const [center, setCenter] = useState({ lat: 11.0168, lng: 76.9558 });
-  const [zoom, setZoom] = useState(11);
+interface PlacesMapProps {
+  plotPoints?: Array<Location>;
+}
+
+const PlacesMap: NextPage<PlacesMapProps> = props => {
+  const [center, setCenter] = useState({ lat: 64.14594, lng: -21.9312 });
+  const [zoom, setZoom] = useState(6);
+
+  const getMarkers = () => {
+    const { plotPoints } = props;
+    const markers =
+      plotPoints &&
+      plotPoints.map(point => (
+        <Marker
+          key={point.id}
+          lat={point.coordinates.lat}
+          lng={point.coordinates.lon}
+          title={point.title}
+        />
+      ));
+    return markers;
+  };
 
   if (process.env.CURRENT_ENVIRONMENT === 'production') {
     return (
@@ -109,7 +130,9 @@ const PlacesMap: NextPage = () => {
             center={center}
             defaultZoom={zoom}
             options={mapOptions}
-          />
+          >
+            {getMarkers()}
+          </GoogleMapReact>
         </div>
       </Container>
     );

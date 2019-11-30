@@ -3,5 +3,5 @@ export type Location = {
   title: string;
   dateVisited: string;
   notes: string;
-  coordinates: string;
+  coordinates: { [coordinate: string]: number };
 };
