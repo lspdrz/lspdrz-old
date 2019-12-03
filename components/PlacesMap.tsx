@@ -8,6 +8,7 @@ import Marker from './Marker';
 import { Location } from '../services/location.types';
 
 const mapOptions = {
+  gestureHandling: 'greedy',
   styles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
     { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
