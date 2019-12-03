@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 import Container from './Container';
 import Marker from './Marker';
-import WorkInProgress from './WorkInProgress';
 import { Location } from '../services/location.types';
 
 const mapOptions = {
@@ -95,9 +94,9 @@ interface PlacesMapProps {
   plotPoints?: Array<Location>;
 }
 
-const PlacesMap: NextPage<PlacesMapProps> = props => {
+const PlacesMap: NextPage<PlacesMapProps> = (props: PlacesMapProps) => {
   const [center, setCenter] = useState({ lat: 64.14594, lng: -21.9312 });
-  const [zoom, setZoom] = useState(6);
+  const [zoom, setZoom] = useState(0);
 
   const getMarkers = () => {
     const { plotPoints } = props;
