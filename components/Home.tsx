@@ -34,13 +34,13 @@ const Home: NextPage = () => {
           </a>
         </p>
         <p>
-          codes around the{' '}
+          codes every{' '}
           <a
             href="https://github.com/lspdrz"
             target="_blank"
             rel="noopener noreferrer"
           >
-            clock
+            day
           </a>
         </p>
         <p>

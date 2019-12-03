@@ -109,34 +109,27 @@ const PlacesMap: NextPage<PlacesMapProps> = props => {
           lat={point.coordinates.lat}
           lng={point.coordinates.lon}
           title={point.title}
+          notes={point.notes}
         />
       ));
     return markers;
   };
 
-  if (process.env.CURRENT_ENVIRONMENT === 'production') {
-    return (
-      <Container>
-        <WorkInProgress />
-      </Container>
-    );
-  } else {
-    return (
-      <Container>
-        <div style={{ height: '100vh', width: '100%' }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
-            defaultCenter={center}
-            center={center}
-            defaultZoom={zoom}
-            options={mapOptions}
-          >
-            {getMarkers()}
-          </GoogleMapReact>
-        </div>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
+          defaultCenter={center}
+          center={center}
+          defaultZoom={zoom}
+          options={mapOptions}
+        >
+          {getMarkers()}
+        </GoogleMapReact>
+      </div>
+    </Container>
+  );
 };
 
 export default PlacesMap;

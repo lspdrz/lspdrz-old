@@ -1,4 +1,5 @@
 import { ContentfulClientApi, createClient } from 'contentful';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Location } from './location.types';
 import moment from 'moment';
 
@@ -28,7 +29,7 @@ export class LocationApi {
         return [];
       })
       .catch(error => {
-        console.log(error.response.data.sys);
+        console.error(error.response.data.sys);
         return [];
       });
   };
@@ -44,7 +45,7 @@ export class LocationApi {
         return null;
       })
       .catch(error => {
-        console.log(error.response.data.sys);
+        console.error(error.response.data.sys);
         return null;
       });
   };
@@ -56,7 +57,7 @@ export class LocationApi {
       id: rawData.sys.id,
       title: rawLocation.title,
       dateVisited: moment(rawLocation.publishedDate).format('DD MMM YYYY'),
-      notes: rawLocation.notes,
+      notes: documentToHtmlString(rawLocation.notes),
       coordinates: rawLocation.coordinates
     };
   };
