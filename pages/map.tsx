@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { NextPage } from 'next';
-import PlacesMap from '../components/PlacesMap';
+import PlacesMap from '../components/map/PlacesMap';
 
 import LocationApi from '../services/location';
 import { Location } from '../services/location.types';

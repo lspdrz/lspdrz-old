@@ -1,8 +1,12 @@
 /* Based on this excellent implementation:
 https://dev.to/sandro_roth/how-to-structure-styled-components-with-react-and-ts-27pn */
 import React, { Component, createRef } from 'react';
-import StyledModal from './Modal.css';
 import ReactDOM from 'react-dom';
+import { Box, Button } from 'rebass';
+const HtmlToReactParser = require('html-to-react').Parser;
+const htmlToReactParser = new HtmlToReactParser();
+
+import StyledModal from './Modal.css';
 
 interface ModalProps {
   id: string;
@@ -75,23 +79,15 @@ class Modal extends Component<ModalProps, ModalState> {
             modalSize={modalSize}
             onTransitionEnd={this.transitionEnd}
           >
-            <div className="box-dialog">
+            <Box className="box-dialog">
               <div className="box-header">
                 <h4 className="box-title">{title}</h4>
-                <button onClick={this.handleClick} className="close">
-                  ×
-                </button>
               </div>
-              <div
-                className="box-content"
-                dangerouslySetInnerHTML={{ __html: notes }}
-              ></div>
-              <div className="box-footer">
-                <button onClick={this.handleClick} className="close">
-                  Close
-                </button>
+              <div className="box-content">
+                {htmlToReactParser.parse(notes)}
               </div>
-            </div>
+              <div className="box-footer"></div>
+            </Box>
             <div
               className={`background`}
               onMouseDown={this.handleClick}

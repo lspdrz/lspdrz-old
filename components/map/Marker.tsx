@@ -1,5 +1,7 @@
 import React, { Component, MouseEvent } from 'react';
-import Modal from './modal/Modal';
+import { Box } from 'rebass';
+
+import Modal from '../modal/Modal';
 
 interface MarkerProps {
   lat: number;
@@ -25,7 +27,26 @@ class Marker extends Component<MarkerProps, MarkerState> {
     const { title, notes } = this.props;
     return (
       <div>
-        <button onClick={this.toggleModal}>{title}</button>{' '}
+        <Box
+          sx={{
+            display: 'inline-block',
+            color: 'black',
+            bg: '#808080',
+            px: 2,
+            py: 1,
+            borderRadius: 9999,
+            ':hover': {
+              backgroundColor: 'black',
+              color: '#808080',
+              cursor: 'pointer'
+            }
+          }}
+          onClick={this.toggleModal}
+          variant="primary"
+          mr={2}
+        >
+          {title}
+        </Box>
         {this.state.isModalOpen && (
           <Modal
             isOpen={this.state.isModalOpen}
