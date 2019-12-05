@@ -1,4 +1,18 @@
-const mapOptions = {
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
+export const locales: { [locale: string]: Coordinates } = {
+  manhattan: { lat: 40.7831, lng: -73.9712 },
+  brooklyn: { lat: 40.6782, lng: -73.9422 },
+  barcelona: { lat: 41.3851, lng: 2.1734 },
+  london: { lat: 51.5074, lng: -0.1278 },
+  seoul: { lat: 37.5326, lng: 127.024612 },
+  austin: { lat: 30.266666, lng: -97.73333 }
+};
+
+export const mapOptions = {
   gestureHandling: 'greedy',
   styles: [
     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
@@ -81,5 +95,3 @@ const mapOptions = {
     }
   ]
 };
-
-export default mapOptions;

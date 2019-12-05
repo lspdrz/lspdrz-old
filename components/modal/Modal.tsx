@@ -2,7 +2,7 @@
 https://dev.to/sandro_roth/how-to-structure-styled-components-with-react-and-ts-27pn */
 import React, { Component, createRef } from 'react';
 import ReactDOM from 'react-dom';
-import { Box, Button } from 'rebass';
+import { Box } from 'rebass';
 const HtmlToReactParser = require('html-to-react').Parser;
 const htmlToReactParser = new HtmlToReactParser();
 

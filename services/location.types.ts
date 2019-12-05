@@ -1,5 +1,3 @@
-import { RichTextContent } from 'contentful';
-
 export type Location = {
   id: number;
   title: string;
