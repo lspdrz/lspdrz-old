@@ -77,6 +77,10 @@ const PlacesMap: NextPage<PlacesMapProps> = (props: PlacesMapProps) => {
   return (
     <Container>
       <div style={{ height: '100vh', width: '100%' }}>
+        <meta
+          name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
         <Flex px={2} color="white" bg="black" alignItems="center">
           <Link variant="nav" href="/">
             lspdrz
