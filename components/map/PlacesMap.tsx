@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import GoogleMapReact from 'google-map-react';
 import { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flex, Text, Box, Link } from 'rebass';
 import { useMediaQuery } from 'react-responsive';
 
@@ -9,6 +9,7 @@ import Container from '../Container';
 import Marker from './Marker';
 import { locales, mapOptions } from './constants';
 import { Location } from '../../services/location.types';
+import { initGA, logPageView } from '../../tools/googleAnalytics';
 
 interface PlacesMapProps {
   plotPoints?: Array<Location>;
@@ -18,6 +19,14 @@ const PlacesMap: NextPage<PlacesMapProps> = (props: PlacesMapProps) => {
   const [center, setCenter] = useState({ lat: 40.7831, lng: -73.9712 }); // uses Manhattan as default
   const [zoom, setZoom] = useState(0); // zoomed all the way out on default
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  useEffect(() => {
+    if (!(window as any).GA_INITIALIZED) {
+      initGA();
+      (window as any).GA_INITIALIZED = true;
+      logPageView();
+    }
+  }, []);
 
   const getMarkers = () => {
     const { plotPoints } = props;

@@ -2,8 +2,9 @@
 import { NextPage } from 'next';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { initGA, logPageView } from '../../tools/googleAnalytics';
 
 import Container from '../Container';
 import StyledHome from './Home.css';
@@ -11,6 +12,14 @@ import StyledHome from './Home.css';
 const Home: NextPage = () => {
   const [copyStatus, setCopyStatus] = useState('Copy');
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
+  useEffect(() => {
+    if (!(window as any).GA_INITIALIZED) {
+      initGA();
+      (window as any).GA_INITIALIZED = true;
+      logPageView();
+    }
+  }, []);
 
   return (
     <Container>
