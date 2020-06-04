@@ -68,21 +68,11 @@ const Home: NextPage = () => {
         <p className="home-entry">
           can&apos;t stop listening to{' '}
           <a
-            href="https://soundcloud.com/luis-1843"
+            href="https://soundcloud.com/forallx"
             target="_blank"
             rel="noopener noreferrer"
           >
             electronic music
-          </a>
-        </p>
-        <p className="home-entry">
-          (very) occassionally takes{' '}
-          <a
-            href="https://www.instagram.com/lspdrz/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            photos
           </a>
         </p>
         <p className="home-entry">
